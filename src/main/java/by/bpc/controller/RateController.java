@@ -2,7 +2,7 @@ package by.bpc.controller;
 
 import by.bpc.dto.RateDTO;
 import by.bpc.dto.RateDTOView;
-import by.bpc.service.CurrencyService;
+import by.bpc.service.RateService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -25,8 +25,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/rate")
 @Api(tags = "API functionality of working with the RATE")
-public class CurrencyController {
-    private final CurrencyService currencyService;
+public class RateController {
+    private final RateService rateService;
 
     @GetMapping("/{date}")
     @ApiOperation("The endpoint for getting all exchange rates for the day")
@@ -36,7 +36,7 @@ public class CurrencyController {
             @ApiResponse(code = 500, message = "Server error")})
     public List<RateDTO> getRatesByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return currencyService.getRatesByDate(localDate);
+        return rateService.getRatesByDate(localDate);
     }
     @GetMapping("/{date}/{curId}")
     @ApiOperation("The endpoint for getting exchange rate for the day by currency id")
@@ -46,6 +46,6 @@ public class CurrencyController {
             @ApiResponse(code = 500, message = "Server error")})
     public RateDTOView getRateByDateAndCurId(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date, @PathVariable Long curId) {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return currencyService.getRateByDateAndCurId(localDate,curId);
+        return rateService.getRateByDateAndCurId(localDate,curId);
     }
 }

@@ -6,7 +6,7 @@ import by.bpc.dto.RateDTOView;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface CurrencyService {
+public interface RateService {
     List<RateDTO> getRatesByDate(LocalDate date);
 
     List<RateDTO> saveRates(List<RateDTO> listRates, LocalDate date);

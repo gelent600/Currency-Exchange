@@ -7,7 +7,7 @@ import by.bpc.dao.repository.RateRepository;
 import by.bpc.dto.RateDTO;
 import by.bpc.dto.RateDTOFeign;
 import by.bpc.dto.RateDTOView;
-import by.bpc.service.CurrencyService;
+import by.bpc.service.RateService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CurrencyServiceImpl implements CurrencyService {
+public class RateServiceImpl implements RateService {
     private final ModelMapper modelMapper;
     private final CurrencyExchangeClient currencyExchangeClient;
     private final RateRepository rateRepository;
