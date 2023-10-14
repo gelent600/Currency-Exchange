@@ -1,0 +1,1 @@
+create table if not exists rate (id  bigserial not null, cur_abbreviation varchar(255), cur_id int8, cur_name varchar(255), cur_official_rate float8, cur_scale int4, date date, primary key (id))
